@@ -224,7 +224,7 @@ def get_engine():
             kwargs['creator'] = lambda: sqlite_disk_conn
         engine = create_engine(
             DATABASE_URL,
-            poolclass=sqlalchemy.pool.StaticPool,
+            poolclass=sqlalchemy.pool.QueuePool,
             **kwargs,
         )
     if engine.url.get_backend_name() == 'sqlite':
